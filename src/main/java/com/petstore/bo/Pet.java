@@ -2,6 +2,9 @@ package com.petstore.bo;
 
 import org.springframework.data.annotation.Id;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by iakoupov on 2016-11-24.
  */
@@ -16,7 +19,7 @@ public class Pet {
 
     private String motto;
 
-    private String image;
+    private List<String> images = new ArrayList<>();
 
 
     public String getId() {
@@ -27,12 +30,13 @@ public class Pet {
         this.id = id;
     }
 
-    public String getImage() {
-        return image;
+
+    public List<String> getImages() {
+        return images;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImages(List<String> images) {
+        this.images = images;
     }
 
     public String getName() {
@@ -62,11 +66,11 @@ public class Pet {
     @Override
     public String toString() {
         return "Pet{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", motto='" + motto + '\'' +
-                ", image='" + image + '\'' +
+                ", images=" + images +
                 '}';
     }
 }
