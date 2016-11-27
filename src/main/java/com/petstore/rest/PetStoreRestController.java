@@ -21,6 +21,8 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:63342")
 public class PetStoreRestController {
 
+    private ThreadLocal<String> token = new ThreadLocal<String>();
+
     @Autowired
     private PetRepository repository;
 
@@ -31,6 +33,15 @@ public class PetStoreRestController {
      */
     @RequestMapping(value = "/pets", method = RequestMethod.GET)
     public List<Pet> getAllPets() {
+
+        return repository.findAll();
+
+    }
+
+    @RequestMapping(value = "/pets/{item}", method = RequestMethod.GET)
+    public List<Pet> getFilteredPets(@PathVariable String item) {
+
+        // search for item
 
         return repository.findAll();
 
@@ -73,28 +84,11 @@ public class PetStoreRestController {
         repository.insert(pet);
     }
 
-//    @RequestMapping(value = "/pet1", method = RequestMethod.POST)
-//    public void addPet(@ModelAttribute("form") PetForm petForm) {
-//
-//        System.out.println("Adding new pet " + pet);
-//        System.out.println("And files " + files);
-//        repository.insert(pet);
-//    }
-
-    //
-    /*@RequestMapping(method = RequestMethod.POST, consumes = {"multipart/form-data"})
-    public void create(@RequestPart("pet") String petString,
-                       @RequestPart(value = "image", required = false) MultipartFile image) throws IOException {
-
-    }*/
-
-    //
-
     @RequestMapping(value = "/pet", method = RequestMethod.PUT)
     public void updatePet(@RequestBody Pet pet) {
 
-        System.out.println("Creating a new pet " + pet);
-        repository.insert(pet);
+        System.out.println("Updating a pet " + pet);
+        repository.save(pet);
 
     }
 
@@ -106,6 +100,8 @@ public class PetStoreRestController {
         repository.delete(id);
 
     }
+
+
 
 
 
