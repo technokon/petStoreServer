@@ -19,6 +19,10 @@ public class Pet {
 
     private String motto;
 
+    private String price;
+
+    private String contactInfo;
+
     private List<String> images = new ArrayList<>();
 
 
@@ -63,6 +67,22 @@ public class Pet {
         this.motto = motto;
     }
 
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getContactInfo() {
+        return contactInfo;
+    }
+
+    public void setContactInfo(String contactInfo) {
+        this.contactInfo = contactInfo;
+    }
+
     @Override
     public String toString() {
         return "Pet{" +
@@ -70,6 +90,8 @@ public class Pet {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", motto='" + motto + '\'' +
+                ", price='" + price + '\'' +
+                ", contactInfo='" + contactInfo + '\'' +
                 ", images=" + images +
                 '}';
     }

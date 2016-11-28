@@ -6,12 +6,18 @@
         <input type="text" class="form-control" ng-model="vm.pet.name" id="name" placeholder="Enter pet's name">
     </div>
     <div class="form-group">
-        <label for="motto">Pet's Motto:</label>
-        <input type="text" class="form-control" ng-model="vm.pet.motto" id="motto" placeholder="Enter pet's motto">
+        <label for="price">Pet's Price:</label>
+        <input type="text" class="form-control" ng-model="vm.pet.price" id="price" placeholder="Enter pet's price">
     </div>
+
     <div class="form-group">
         <label for="description">Pet's Description:</label>
-        <input type="text" class="form-control" ng-model="vm.pet.description" id="description" placeholder="Describe this pet">
+        <textarea class="form-control" ng-model="vm.pet.description" rows="10" id="description" placeholder="Describe this pet"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="contactInfo">Contact info:</label>
+        <textarea class="form-control" ng-model="vm.pet.contactInfo" rows="3" id="contactInfo" placeholder="Enter contact info"></textarea>
     </div>
 
 

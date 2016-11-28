@@ -14,7 +14,7 @@ function MainController(petService, $location, LoginDialogService, Session) {
         LoginDialogService.openLogin().then(function (data) {
            console.log('dialog closed id:', data.id);
             
-           Session.login(); 
+           
        })
     }
     
@@ -22,9 +22,7 @@ function MainController(petService, $location, LoginDialogService, Session) {
         LoginDialogService.openLogout().then(function (data) {
             console.log('dialog closed id:', data.id);
 
-            if (data) {
-                Session.logout();
-            }
+            
         })
     }
     
