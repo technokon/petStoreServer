@@ -1,0 +1,40 @@
+<div class="container">
+<h2>Enter new pets information</h2>
+<form>
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" ng-model="vm.pet.name" id="name" placeholder="Enter pet's name">
+    </div>
+    <div class="form-group">
+        <label for="motto">Pet's Motto:</label>
+        <input type="text" class="form-control" ng-model="vm.pet.motto" id="motto" placeholder="Enter pet's motto">
+    </div>
+    <div class="form-group">
+        <label for="description">Pet's Description:</label>
+        <input type="text" class="form-control" ng-model="vm.pet.description" id="description" placeholder="Describe this pet">
+    </div>
+
+    <div class="form-group">
+        <label class="btn btn-primary" for="photos">
+            <input type="file" class="form-control" id="photos" file-input="vm.photos" style="display: none" multiple>
+            Pet's Photos
+        </label>
+    </div>
+
+
+    <div ng-if="vm.showPhotos()">
+        <div class="row">
+            <div class="col-md-2" ng-repeat="photo in vm.photos track by $index">
+                <img class="thumbnail small-height" ng-src="{{photo.url}}">
+            </div>
+        </div>
+        <div class="spacer">
+            <button class="btn btn-danger" ng-click="vm.clearPhotoSelections()">Clear Photos</button>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" ng-click="vm.createPet(vm.pet, vm.photos);">Submit</button>
+    <button class="btn btn-info" ng-click="vm.cancel();">Cancel</button>
+</form>
+
+</div>

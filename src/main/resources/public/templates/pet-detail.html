@@ -1,0 +1,27 @@
+<div class="pet-images">
+    <img ng-src="data:image/jpeg;base64, {{img}}"
+         class="pet"
+         ng-repeat="img in vm.pet.images track by $index"
+         ng-class="{active: vm.mainImage==img}">
+</div>
+
+<h3>{{vm.pet.name}}</h3>
+
+<p>{{vm.pet.motto}}</p>
+
+<p>{{vm.pet.description}}</p>
+
+<ul class="pet-thumbs">
+    <li ng-repeat="img in vm.pet.images track by $index">
+        <img ng-src="data:image/jpeg;base64, {{img}}" ng-click="vm.setImage(img)">
+    </li>
+</ul>
+
+
+<div class="nav">
+    <button type="button" ng-click="vm.listPage()" class="btn btn-info">Back to list</button>
+
+    <button type="button" ng-click="vm.removePet(vm.pet)" class="btn btn-danger">Remove Pet</button>
+
+    <button type="button" ng-click="vm.editPet(vm.pet.id)" class="btn btn-warning">Edit Pet</button>
+</div>

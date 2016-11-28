@@ -18,7 +18,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/pet-store/")
-@CrossOrigin(origins = "http://localhost:63342")
+//@CrossOrigin(origins = "http://localhost:63342")
 public class PetStoreRestController {
 
     private ThreadLocal<String> token = new ThreadLocal<String>();

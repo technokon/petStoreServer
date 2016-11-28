@@ -14,6 +14,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
+import org.springframework.web.filter.CorsFilter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +30,7 @@ import java.io.IOException;
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 
+
     @Override
     protected void configure(AuthenticationManagerBuilder builder) throws Exception {
         builder.inMemoryAuthentication()
@@ -41,11 +43,12 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable() // disable csrf token
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "pet-store/pet/**").authenticated()    // block post
-                .antMatchers(HttpMethod.PUT, "pet-store/pet/**").authenticated()     // block put
-                .antMatchers(HttpMethod.DELETE, "pet-store/pet/**").authenticated() // block delete
+                .antMatchers(HttpMethod.POST, "/pet-store/**").authenticated()    // block post
+                .antMatchers(HttpMethod.PUT, "/pet-store/**").authenticated()     // block put
+                .antMatchers(HttpMethod.DELETE, "/pet-store/**").authenticated() // block delete
                 .and()
                 .logout().deleteCookies("JSESSIONID").permitAll(); // remove on logout
+                //.and().headers().cacheControl().disable();        // allow cache
 
         // send 401 if blocked
         http.exceptionHandling().authenticationEntryPoint(new AuthenticationEntryPoint() {
