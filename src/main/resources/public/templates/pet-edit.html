@@ -25,7 +25,7 @@
         <div class="row">
             <div class="col-md-2" ng-repeat="photo in vm.pet.images track by $index">
                 <img class="thumbnail small-height" ng-src="data:image/jpeg;base64, {{photo}}">
-                <a href="#/pets/{{pet.id}}" ng-click="vm.removeImage(photo)">Remove</a>
+                <!--<a href="#/pets/{{pet.id}}" ng-click="vm.removeImage(photo)">Remove</a>-->
             </div>
         </div>
     </div>

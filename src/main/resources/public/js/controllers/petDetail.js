@@ -5,9 +5,9 @@
 
 angular.module('controllers').controller('PetDetailController', PetDetailController);
 
-PetDetailController.$inject = ['$routeParams', 'petService', '$location'];
+PetDetailController.$inject = ['$routeParams', 'petService', '$location', 'confirmDialog'];
 
-function PetDetailController($routeParams, petService, $location) {
+function PetDetailController($routeParams, petService, $location, confirmDialog) {
     
     var vm = this;
     
@@ -31,9 +31,19 @@ function PetDetailController($routeParams, petService, $location) {
     }
     
     vm.removePet = function (pet) {
-        petService.removePet(pet.id).success(function (data) {
-            $location.path('/pets');
-        });
+        
+        // pop a dialog before removing the pet
+        confirmDialog.openConfirm('Are you sure you want to remove this pet?').then(function (data) {
+            
+            console.log('inside PetDetailController remove pet', data);
+
+            petService.removePet(pet.id).success(function (data) {
+                $location.path('/pets');
+            });
+
+        }).catch(function (rejection) {
+            console.log('not removing the pet', rejection);
+        })
 
     }
     
