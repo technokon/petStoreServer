@@ -95,4 +95,31 @@ public class Pet {
                 ", images=" + images +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Pet pet = (Pet) o;
+
+        if (name != null ? !name.equals(pet.name) : pet.name != null) return false;
+        if (description != null ? !description.equals(pet.description) : pet.description != null) return false;
+        if (motto != null ? !motto.equals(pet.motto) : pet.motto != null) return false;
+        if (price != null ? !price.equals(pet.price) : pet.price != null) return false;
+        if (contactInfo != null ? !contactInfo.equals(pet.contactInfo) : pet.contactInfo != null) return false;
+        return images != null ? images.equals(pet.images) : pet.images == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (motto != null ? motto.hashCode() : 0);
+        result = 31 * result + (price != null ? price.hashCode() : 0);
+        result = 31 * result + (contactInfo != null ? contactInfo.hashCode() : 0);
+        result = 31 * result + (images != null ? images.hashCode() : 0);
+        return result;
+    }
 }

@@ -32,7 +32,7 @@ function MainController(petService, $location, LoginDialogService, Session) {
 
     
     vm.searchItem = function (item) {
-        $location.path('/search/' + item);
+        $location.path('/search/' + (item ? item : ''));
     }
 }
 

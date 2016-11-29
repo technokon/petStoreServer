@@ -9,9 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by iakoupov on 2016-11-23.
@@ -39,11 +37,18 @@ public class PetStoreRestController {
     }
 
     @RequestMapping(value = "/pets/{item}", method = RequestMethod.GET)
-    public List<Pet> getFilteredPets(@PathVariable String item) {
+    public Set<Pet> getFilteredPets(@PathVariable String item) {
+
+        System.out.println("searching names and description for " + item);
 
         // search for item
+        Set<Pet> pets = new HashSet<>();
+        pets.addAll(repository.findByDescriptionLike(item));
+        pets.addAll(repository.findByNameLike(item));
 
-        return repository.findAll();
+        System.out.println("found: " + pets);
+
+        return pets;
 
     }
 

@@ -17,7 +17,7 @@ function PetService($resource, $http) {
 
     function getPets(param) {
         return $http({
-            url: nginxHost + '/pet-store/pets/' + param,
+            url: nginxHost + '/pet-store/pets/' + (param ? param : ''),
             mehtod: 'GET'
         })
     }
