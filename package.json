@@ -4,7 +4,7 @@
   "description": "pet store application",
   "main": "index.js",
   "scripts": {
-    "test": "karma start tests/karma.conf.js"
+    "test": "karma start karma.config.js"
   },
   "author": "Emil",
   "license": "ISC",
